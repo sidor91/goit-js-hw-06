@@ -5,9 +5,8 @@ loginFrom.addEventListener("submit", handleSubmit);
 
 function handleSubmit(event) {
     event.preventDefault();
-    const {
-        elements: { email, password }
-    } = event.currentTarget;
+
+    const {email, password } = event.currentTarget.elements;
 
     if (email.value === "" || password.value === "") {
         return alert("Please fill in all the fields!");
@@ -15,5 +14,6 @@ function handleSubmit(event) {
 
     const result = { Email: `${email.value}`, Password: `${password.value}` };
     console.log(result);
-  event.currentTarget.reset();
+   
+    event.currentTarget.reset();
 };
