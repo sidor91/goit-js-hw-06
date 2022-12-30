@@ -15,5 +15,3 @@ function onDecrementBtn() {
     counterValue -= 1;
     counterElement.textContent = `${counterValue}`;
 }
-
-console.log(counterElement.textContent);
