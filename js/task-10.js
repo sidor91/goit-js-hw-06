@@ -10,12 +10,12 @@ const boxWithBoxes = document.querySelector('#boxes');
 // -------------------- Input --------------------
 
 const inputField = document.querySelector('input');
-let numberOfBoxes;
+let numberOfBoxes = 0;
 
 inputField.addEventListener('input', onInputAction);
 
 function onInputAction(event) {
-   numberOfBoxes = Number(event.currentTarget.value);
+  numberOfBoxes = Number(event.currentTarget.value);
 }
 
 // -------------------- Create --------------------
@@ -25,25 +25,31 @@ createButton.addEventListener('click', onCreateButtonClick);
 function onCreateButtonClick(event) {
   if (numberOfBoxes >= 1 && numberOfBoxes <= 100) {
     createBoxes(numberOfBoxes);
+    inputField.value = 0;
     return;
-  }
+  } 
+
   alert('the value should be from 1 to 100!');
-  onDestroyButtonClick();
+  inputField.value = 0;
 }
 
- let boxesArr = [];
+let boxesArr = [];
 
 function createBoxes(numberOfBoxes) {
-  for (let i = 1; i <= numberOfBoxes; i += 1) {
+const currentNumberOfBoxes = boxesArr.length
+const totalNumberOfBoxes = (boxesArr.length + numberOfBoxes);
+  for (let i = currentNumberOfBoxes; i < totalNumberOfBoxes && i <= 100; i += 1) {
     const boxElem = document.createElement('div');
+    boxElem.classList.add('box');
     boxElem.style.backgroundColor = `${getRandomHexColor()}`;
-    const boxSizeValue = (i * 10 + 20);
+    const boxSizeValue = (i * 10 + 30);
     boxElem.style.width = `${boxSizeValue}px`;
     boxElem.style.height = `${boxSizeValue}px`;
     boxesArr.push(boxElem);
   }
-    boxWithBoxes.append(...boxesArr);
+  boxWithBoxes.append(...boxesArr);
 }
+
 
 // -------------------- Destroy --------------------
 const destroyButton = document.querySelector('[data-destroy]');
@@ -54,4 +60,3 @@ function onDestroyButtonClick() {
   inputField.value = 0;
   boxesArr = [];
 };
-
