@@ -28,7 +28,6 @@ function onCreateButtonClick(event) {
     inputField.value = 0;
     return;
   } 
-
   alert('the value should be from 1 to 100!');
   inputField.value = 0;
 }
@@ -36,11 +35,10 @@ function onCreateButtonClick(event) {
 let boxesArr = [];
 
 function createBoxes(numberOfBoxes) {
-const currentNumberOfBoxes = boxesArr.length
+const currentNumberOfBoxes = boxesArr.length;
 const totalNumberOfBoxes = (boxesArr.length + numberOfBoxes);
   for (let i = currentNumberOfBoxes; i < totalNumberOfBoxes && i <= 100; i += 1) {
     const boxElem = document.createElement('div');
-    boxElem.classList.add('box');
     boxElem.style.backgroundColor = `${getRandomHexColor()}`;
     const boxSizeValue = (i * 10 + 30);
     boxElem.style.width = `${boxSizeValue}px`;
